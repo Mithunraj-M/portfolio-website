@@ -1,0 +1,64 @@
+.timeline {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 2rem 0;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 25px; /* Adjust this value to position the line at the right height */
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: black; /* Color of the connecting line */
+  z-index: -1;
+}
+
+.timeline-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin: 0 1rem;
+}
+
+.timeline-date {
+  background: #333;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  top: 25px; /* Same value as the horizontal line */
+  width: 2px;
+  height: calc(100% - 25px); /* Length from the horizontal line to the content box */
+  background: #333; /* Same color as the horizontal line */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+.timeline-content {
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+  position: relative;
+}
+
+.clg-title{
+  color:rgb(9, 9, 109) !important;
+  font-weight:bold ;
+}
