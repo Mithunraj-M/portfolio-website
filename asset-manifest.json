@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Mithunraj-M/portfolio-website.git/static/css/main.3f023296.css",
+    "main.js": "/Mithunraj-M/portfolio-website.git/static/js/main.6528346c.js",
+    "static/js/453.b21437c2.chunk.js": "/Mithunraj-M/portfolio-website.git/static/js/453.b21437c2.chunk.js",
+    "static/media/profile.jpg": "/Mithunraj-M/portfolio-website.git/static/media/profile.6967b2229e52d20db562.jpg",
+    "static/media/home_background.jpg": "/Mithunraj-M/portfolio-website.git/static/media/home_background.dc88c00c32178ef1423c.jpg",
+    "static/media/react.jpg": "/Mithunraj-M/portfolio-website.git/static/media/react.535add4b0f9a7f3cf11b.jpg",
+    "static/media/python.jpg": "/Mithunraj-M/portfolio-website.git/static/media/python.141f12b52bc6f27a2926.jpg",
+    "static/media/nurse.jpg": "/Mithunraj-M/portfolio-website.git/static/media/nurse.ac4d73178eac6947f2ee.jpg",
+    "index.html": "/Mithunraj-M/portfolio-website.git/index.html",
+    "main.3f023296.css.map": "/Mithunraj-M/portfolio-website.git/static/css/main.3f023296.css.map",
+    "main.6528346c.js.map": "/Mithunraj-M/portfolio-website.git/static/js/main.6528346c.js.map",
+    "453.b21437c2.chunk.js.map": "/Mithunraj-M/portfolio-website.git/static/js/453.b21437c2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3f023296.css",
+    "static/js/main.6528346c.js"
+  ]
+}
