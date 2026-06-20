@@ -20,4 +20,7 @@ export const profile: Profile = {
     'Backend Engineering',
   ],
   avatar,
+  // Drop a PDF at `public/resume.pdf` and the download button appears
+  // automatically. No file → no button (it's existence-checked at runtime).
+  resumeUrl: 'resume.pdf',
 };

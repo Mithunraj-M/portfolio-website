@@ -5,7 +5,7 @@ import { education } from '@/data/education';
 
 export function Education() {
   return (
-    <Section id="education" eyebrow="04 — Education" title="Academic background">
+    <Section id="education" eyebrow="05 — Education" title="Academic background">
       <RevealGroup className="grid gap-5 md:grid-cols-3">
         {education.map((edu) => (
           <RevealItem key={edu.institution}>

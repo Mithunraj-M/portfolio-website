@@ -19,6 +19,7 @@ the type first and the compiler will point you to everything that needs changing
 |---|---|
 | Name, role, tagline, About paragraphs, hero highlight chips, profile photo | [`src/data/profile.ts`](src/data/profile.ts) |
 | Work experience entries | [`src/data/experience.ts`](src/data/experience.ts) |
+| Skills (grouped by category) | [`src/data/skills.ts`](src/data/skills.ts) |
 | Projects | [`src/data/projects.ts`](src/data/projects.ts) |
 | Education entries | [`src/data/education.ts`](src/data/education.ts) |
 | Email, social links, and the navbar menu | [`src/data/socials.ts`](src/data/socials.ts) |
@@ -38,11 +39,14 @@ A single `profile` object. Fields:
 - `location` — e.g. `"Bengaluru, India"`.
 - `highlights` — short array of keyword chips shown in the hero.
 - `avatar` — the profile image (see [Images](#images)).
+- `resumeUrl` — file name of your CV in `public/` (e.g. `"resume.pdf"`) or a full
+  URL. See [Resume / CV download](#resume--cv-download) — the button only shows if
+  the file actually exists, so it's safe to leave set.
 
 ```ts
 export const profile: Profile = {
   name: 'Your Name',
-  role: 'AI/ML Engineer',
+  role: 'AI & Software Engineering Intern',
   tagline: 'One line about what you build.',
   about: [
     'First paragraph.',
@@ -51,6 +55,7 @@ export const profile: Profile = {
   location: 'City, Country',
   highlights: ['LLM Evaluation', 'Agentic AI', 'Deep Learning'],
   avatar,
+  resumeUrl: 'resume.pdf',
 };
 ```
 
@@ -103,10 +108,15 @@ Fields (from the `ProjectItem` type):
 - `title` *(required)*
 - `description` *(required)* — 1–2 sentence summary.
 - `tech` *(required)* — array of stack tags.
-- `link` — source or live URL.
-- `linkLabel` — button text for the link; defaults to `"View"`.
+- `link` — repo / source URL (shows a "Code" button with a GitHub icon).
+- `linkLabel` — button text for the repo link; defaults to `"Code"`.
+- `demo` — optional live demo / deployed URL (shows a separate "Live demo" button).
 - `category` — tag shown on the card, e.g. `"Deep Learning"`, `"Full Stack"`, `"IoT"`.
-- `featured` — `true` to highlight.
+- `year` — optional year/period shown on the card, e.g. `"2024"`.
+- `metrics` — optional array of result chips, e.g. `["98% accuracy", "5k images"]`.
+  **Use real numbers only** — these are the most persuasive part of a card.
+- `image` — optional thumbnail (import from `src/assets/` or a `public/` URL).
+- `featured` — `true` to highlight (the card spans full width).
 
 ```ts
 {
@@ -114,11 +124,34 @@ Fields (from the `ProjectItem` type):
   description: 'What it does, in a sentence or two.',
   tech: ['Python', 'TensorFlow', 'Keras'],
   link: 'https://github.com/you/project',
-  linkLabel: 'View on GitHub',
+  demo: 'https://your-demo.example.com',
   category: 'Deep Learning',
+  year: '2024',
+  metrics: ['98% accuracy', '5k images'],
   featured: true,
 },
 ```
+
+---
+
+## Skills — `src/data/skills.ts`
+
+An array of skill groups, each rendered as a card. Add/remove categories freely.
+
+Fields (from the `SkillGroup` type):
+
+- `category` *(required)* — the group heading, e.g. `"Languages"`, `"AI / ML"`.
+- `skills` *(required)* — array of skill names shown as chips.
+
+```ts
+export const skills: SkillGroup[] = [
+  { category: 'Languages', skills: ['Python', 'TypeScript'] },
+  { category: 'AI / ML', skills: ['PyTorch', 'LangGraph', 'RAG'] },
+  { category: 'Backend', skills: ['FastAPI', 'Node.js'] },
+];
+```
+
+Keep it honest — list what you can actually speak to in an interview.
 
 ---
 
@@ -160,7 +193,7 @@ Three things live here:
    - `href` — the URL (use `mailto:` for email).
    - `display` — optional plain text shown to the user, e.g. the handle.
 3. **`navLinks`** — the navbar menu. Each `{ label, id }` **`id` must match the
-   `id` attribute of the matching section** (e.g. `about`, `experience`,
+   `id` attribute of the matching section** (e.g. `about`, `experience`, `skills`,
    `projects`, `education`, `contact`) or smooth-scroll navigation will break.
 
 ```ts
@@ -206,6 +239,38 @@ When in doubt, use the imported-asset approach.
 These live in [`index.html`](index.html), not the data files: the `<title>`, the
 `description` meta tag, the Open Graph tags, the favicon link, and the Google
 Fonts `<link>`s. Update them there.
+
+---
+
+## Resume / CV download
+
+Drop your CV at **`public/resume.pdf`** and a "Download CV" button appears
+automatically in the hero. There's nothing else to wire up: the button checks at
+runtime whether the file exists, so **if no file is present it simply doesn't
+show** (no broken link). To use a different file name or an external URL, set
+`resumeUrl` in [`src/data/profile.ts`](src/data/profile.ts); set it to `''` to
+hide the button entirely.
+
+---
+
+## Social share image (Open Graph)
+
+When the site link is shared (LinkedIn, WhatsApp, Slack…), the preview image comes
+from `og:image` in [`index.html`](index.html). Add a **1200×630** image at
+**`public/og-image.png`** — the meta tags already point at it. Without the file,
+the link still works; it just won't show a preview image.
+
+---
+
+## Analytics (optional)
+
+Privacy-friendly analytics (GoatCounter — no cookies, no personal data) is
+pre-wired but **commented out** in [`index.html`](index.html). To turn it on:
+
+1. Sign up free at <https://www.goatcounter.com/> and choose a code (subdomain).
+2. In `index.html`, replace `MYCODE` with your code and uncomment the `<script>`.
+
+It stays off until you do this, so no requests are sent in the meantime.
 
 ---
 

@@ -1,5 +1,6 @@
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, Github, Linkedin, Mail, MapPin } from 'lucide-react';
+import { ArrowDown, Download, Github, Linkedin, Mail, MapPin } from 'lucide-react';
 import { profile } from '@/data/profile';
 import { socials } from '@/data/socials';
 
@@ -9,7 +10,32 @@ const iconFor = {
   mail: Mail,
 } as const;
 
+/** Resolve a resume value (filename in public/, or full URL) to a usable href. */
+function resolveResumeUrl(raw?: string): string | null {
+  if (!raw) return null;
+  return /^https?:\/\//.test(raw)
+    ? raw
+    : `${import.meta.env.BASE_URL}${raw.replace(/^\//, '')}`;
+}
+
 export function Hero() {
+  // Only show the CV button if the file actually exists — so a missing
+  // resume.pdf never produces a broken link / 404.
+  const [resumeHref, setResumeHref] = useState<string | null>(null);
+  useEffect(() => {
+    const url = resolveResumeUrl(profile.resumeUrl);
+    if (!url) return;
+    let active = true;
+    fetch(url, { method: 'HEAD' })
+      .then((res) => {
+        const looksHtml = (res.headers.get('content-type') ?? '').includes('text/html');
+        if (active && res.ok && !looksHtml) setResumeHref(url);
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, []);
   return (
     <section id="home" className="relative flex min-h-screen items-center overflow-hidden">
       {/* Backdrop */}
@@ -73,6 +99,17 @@ export function Hero() {
             >
               Get in touch
             </a>
+            {resumeHref && (
+              <a
+                href={resumeHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface)] px-5 py-2.5 text-sm font-medium text-[var(--text)] transition-colors hover:border-[color-mix(in_srgb,var(--color-accent)_40%,var(--border))]"
+              >
+                <Download size={16} />
+                Download CV
+              </a>
+            )}
 
             <div className="ml-1 flex items-center gap-1">
               {socials.map((s) => {
