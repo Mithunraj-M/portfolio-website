@@ -9,6 +9,7 @@ export const education: EducationItem[] = [
     location: 'Chennai, India',
     qualification: 'B.Tech, Computer Science & Engineering',
     period: '2022 – 2026',
+    score: 'CGPA 8.39',
     detail: 'Specialization in Artificial Intelligence & Machine Learning',
   },
   {

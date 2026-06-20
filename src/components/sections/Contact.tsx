@@ -11,7 +11,7 @@ const iconFor: Record<string, LucideIcon> = {
 
 export function Contact() {
   return (
-    <Section id="contact" eyebrow="05 — Contact" title="Let's build something">
+    <Section id="contact" eyebrow="06 — Contact" title="Let's build something">
       <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
         <Reveal>
           <p className="max-w-md text-base leading-relaxed text-[var(--text-muted)]">
