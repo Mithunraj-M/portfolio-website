@@ -66,9 +66,14 @@ npm run preview  # serve the production build locally
 
 ## Deploying to GitHub Pages
 
-```bash
-npm run deploy   # runs predeploy (build) then publishes dist/ via gh-pages
-```
+Deployment is **automatic via GitHub Actions** — every push to `main` builds and
+publishes the site. There is no manual deploy command. The workflow lives in
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) and uses the
+built-in `GITHUB_TOKEN` (no PAT or secrets required).
+
+> One-time setup: in the repo, **Settings → Pages → Source** must be set to
+> **"GitHub Actions"** (not "Deploy from a branch"). You can also trigger a run
+> manually from the **Actions** tab via "Run workflow".
 
 The site is served under the `/portfolio-website/` base path, configured in
 [`vite.config.ts`](vite.config.ts). If you rename the repository, update both that
