@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# Mithunraj M — Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A single-page personal portfolio for **Mithunraj M** (AI/ML Engineer). Modern
+dark theme with a light-mode toggle, scroll-reveal motion, and fully
+data-driven content. Deployed to GitHub Pages.
 
-## Available Scripts
+🔗 **Live:** https://Mithunraj-M.github.io/portfolio-website
 
-In the project directory, you can run:
+## Tech stack
 
-### `npm start`
+- **[Vite](https://vite.dev/)** 6 + **React** 19 + **TypeScript** 5
+- **[Tailwind CSS](https://tailwindcss.com/)** v4 (via `@tailwindcss/vite`)
+- **[Framer Motion](https://www.framer.com/motion/)** — scroll reveals & hero entrance
+- **[lucide-react](https://lucide.dev/)** — icons
+- **[gh-pages](https://github.com/tschaub/gh-pages)** — GitHub Pages deployment
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Project structure
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
+src/
+  main.tsx              # entry point
+  App.tsx               # composes the single page (sections in order)
+  index.css             # Tailwind import, design tokens, base styles
+  types/index.ts        # shared content types
+  data/                 # all site content lives here (see CONTENT_GUIDE.md)
+    profile.ts  experience.ts  projects.ts  education.ts  socials.ts
+  components/
+    sections/           # Navbar, Hero, About, Experience, Projects, Education, Contact, Footer
+    theme/              # ThemeProvider + ThemeToggle (dark/light)
+    ui/                 # Section, Reveal, Badge primitives
+  assets/               # imported images (profile photo, etc.)
+public/                 # static files served as-is (favicon, robots.txt)
+index.html              # HTML shell: title, meta, fonts, theme pre-paint script
+vite.config.ts          # base path + plugins
+```
 
-### `npm test`
+## Editing content
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**All content lives in [`src/data/`](src/data/)** — you don't need to edit
+component code to update text, links, projects, or experience. See
+**[CONTENT_GUIDE.md](CONTENT_GUIDE.md)** for exactly how to add/edit each section
+and swap images.
 
-### `npm run build`
+## Local development
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm install      # install dependencies
+npm run dev      # start the dev server (http://localhost:5173)
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Build & preview
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm run build    # type-check (tsc -b) + production build into dist/
+npm run preview  # serve the production build locally
+```
 
-### `npm run eject`
+## Theming & accessibility
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Defaults to **dark**; respects the OS `prefers-color-scheme` on first visit and
+  persists the user's choice to `localStorage`.
+- A pre-paint script in [`index.html`](index.html) sets the theme before first
+  render to avoid a flash of the wrong theme.
+- Animations honor **`prefers-reduced-motion`** (Framer Motion `MotionConfig`
+  + CSS fallbacks).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Deploying to GitHub Pages
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+npm run deploy   # runs predeploy (build) then publishes dist/ via gh-pages
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The site is served under the `/portfolio-website/` base path, configured in
+[`vite.config.ts`](vite.config.ts). If you rename the repository, update both that
+`base` and the `homepage` field in [`package.json`](package.json) to match, or
+deployed asset paths will break.
