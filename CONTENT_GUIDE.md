@@ -211,12 +211,16 @@ Fonts `<link>`s. Update them there.
 
 ## Deploying
 
-After editing content:
+Deployment is **automatic**: commit your content changes and push to `main`, and
+GitHub Actions builds and publishes the site (see
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)). There's no manual
+deploy step.
+
+To check your changes locally before pushing:
 
 ```bash
 npm run build     # type-checks and builds into dist/
-npm run preview   # optional: preview the production build locally
-npm run deploy    # publishes dist/ to GitHub Pages
+npm run preview   # preview the production build locally
 ```
 
 The site is served under `/portfolio-website/` on GitHub Pages — that base path
