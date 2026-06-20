@@ -1,9 +1,0 @@
-/* src/App.css */
-.App {
-  font-family: Arial, sans-serif;
-  text-align: center;
-}
-
-.home, .about, .certifications, .projects, .contact {
-  padding: 20px;
-}
