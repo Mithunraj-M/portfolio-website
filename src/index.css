@@ -28,17 +28,25 @@
   50% { transform: translateY(-12px); }
 }
 
-/* Semantic surface tokens, swapped by theme. */
+/*
+  Semantic tokens, swapped by theme. Accent + on-accent are also per-mode:
+  light uses a deeper cyan→violet so it reads on light surfaces (with white
+  text on accent buttons); dark keeps the bright glow (with near-black text).
+*/
 :root {
-  --bg: #ffffff;
-  --bg-soft: #f4f5f8;
+  /* Light = "cool slate": soft blue-grey page, white cards that pop. */
+  --bg: #f6f8fb;
+  --bg-soft: #eef1f6;
   --surface: #ffffff;
-  --surface-2: #f8fafc;
-  --border: #e2e8f0;
+  --surface-2: #f3f5f9;
+  --border: #dde3ec;
   --text: #0f172a;
   --text-muted: #475569;
   --text-faint: #64748b;
-  --ring: rgba(34, 211, 238, 0.4);
+  --ring: rgba(14, 116, 144, 0.35);
+  --color-accent: #0e7490; /* cyan-700 */
+  --color-accent-2: #7c3aed; /* violet-600 */
+  --on-accent: #ffffff;
 }
 
 .dark {
@@ -51,6 +59,9 @@
   --text-muted: #9aa3b5;
   --text-faint: #6b7488;
   --ring: rgba(34, 211, 238, 0.45);
+  --color-accent: #22d3ee; /* cyan-400 */
+  --color-accent-2: #a78bfa; /* violet-400 */
+  --on-accent: #07080d;
 }
 
 @layer base {

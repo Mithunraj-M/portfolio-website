@@ -20,7 +20,7 @@ export function Contact() {
           </p>
           <a
             href={`mailto:${email}`}
-            className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-2)] px-5 py-2.5 text-sm font-semibold text-[#07080d] transition-transform hover:-translate-y-0.5"
+            className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-2)] px-5 py-2.5 text-sm font-semibold text-[var(--on-accent)] transition-transform hover:-translate-y-0.5"
           >
             <Mail size={16} />
             Say hello

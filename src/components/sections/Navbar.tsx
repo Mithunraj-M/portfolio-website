@@ -56,7 +56,7 @@ export function Navbar() {
           href="#home"
           className="group flex items-center gap-2 font-mono text-sm font-semibold tracking-tight"
         >
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-[var(--color-accent)] to-[var(--color-accent-2)] text-[#07080d]">
+          <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-[var(--color-accent)] to-[var(--color-accent-2)] text-[var(--on-accent)]">
             {initials}
           </span>
           <span className="hidden text-[var(--text)] sm:inline">{profile.name}</span>
