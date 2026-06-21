@@ -46,9 +46,8 @@
       (function () {
         try {
           var stored = localStorage.getItem('theme');
-          var prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-          // Stored choice wins; otherwise honor OS preference, defaulting to dark.
-          var theme = stored || (prefersLight ? 'light' : 'dark');
+          // Default to dark regardless of OS setting; only a saved choice overrides.
+          var theme = stored === 'light' || stored === 'dark' ? stored : 'dark';
           document.documentElement.classList.toggle('dark', theme === 'dark');
         } catch (e) {}
       })();
