@@ -1,8 +1,15 @@
 import type { ProjectItem } from '@/types';
+// Placeholder thumbnail so you can see the image layout. Swap per-project
+// for a real screenshot in src/assets/ (or remove `image` to hide it).
+import placeholderImg from '@/assets/home_background.jpg';
 
 /**
  * Projects — featured ones can be marked `featured: true`.
  * To add a project, copy a block and fill it in. See CONTENT_GUIDE.md.
+ *
+ * ⚠️ PLACEHOLDER DATA: the `year`, `metrics`, `demo`, and `image` values below
+ * are dummy values added only to preview the card layout. REPLACE them with
+ * real numbers/links before relying on them — do not ship fake metrics long-term.
  */
 export const projects: ProjectItem[] = [
   {
@@ -14,6 +21,11 @@ export const projects: ProjectItem[] = [
     linkLabel: 'View on GitHub',
     category: 'Deep Learning',
     featured: true,
+    // ↓ placeholder — replace
+    year: '2024',
+    metrics: ['98% accuracy', '3,000 MRI scans', '2 classes'],
+    image: placeholderImg,
+    demo: 'https://example.com',
   },
   {
     title: 'Online Complaint Registration Platform',
@@ -24,6 +36,9 @@ export const projects: ProjectItem[] = [
     linkLabel: 'View on GitHub',
     category: 'Full Stack',
     featured: true,
+    // ↓ placeholder — replace
+    year: '2024',
+    metrics: ['CRUD + JWT auth', 'Image uploads', 'REST API'],
   },
   {
     title: 'Restaurant Food Recommendation System',
@@ -33,6 +48,9 @@ export const projects: ProjectItem[] = [
     link: 'https://github.com/Mithunraj-M/Food-Recommendation-System',
     linkLabel: 'View on GitHub',
     category: 'Machine Learning',
+    // ↓ placeholder — replace
+    year: '2023',
+    metrics: ['5 clusters', '500+ dishes'],
   },
   {
     title: 'Wireless Nurse Calling System (IoT)',
@@ -42,5 +60,8 @@ export const projects: ProjectItem[] = [
     link: 'https://github.com/Mithunraj-M/Wireless-Nurse-Calling-System',
     linkLabel: 'View on GitHub',
     category: 'IoT',
+    // ↓ placeholder — replace
+    year: '2023',
+    metrics: ['<1s alert latency', 'Multi-room'],
   },
 ];
